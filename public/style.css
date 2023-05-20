@@ -1,0 +1,223 @@
+/* General CSS (for all pages) */
+
+/* Start of html tag's css */
+html,
+body,
+main {
+  width: 100%;
+  margin: 0;
+}
+
+header {
+  width: 100%;
+  background-image: linear-gradient(#000000, #003502);
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+
+main {
+  margin-top: 77px;
+  position: relative;
+}
+
+article {
+  display: flex;
+  margin: 50px 20px;
+  flex-wrap: wrap;
+}
+
+h1,
+h2,
+h3 {
+  color: #ffffff;
+  font-size: 45px;
+  /* first font */
+  font-family: sofia-pro-soft, sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+h2 {
+  /* !important used to replace other css */
+  font-size: 35px !important;
+}
+
+h3 {
+  font-size: 15px !important;
+}
+
+p {
+  color: #ffffff;
+  font-size: 25px;
+  /* second font */
+  font-family: karmina-sans, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.w-100{
+    width: 100%;
+}
+
+/* End of html tag's css */
+
+
+/* Useful simple classes wich most elements share (margin, padding, display flex, and etc) used so that they don't need to be repeated for each class*/
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-center {
+    justify-content: center;
+  }
+
+.col-30 {
+  max-width: 1100px;
+  width: 100%;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.mr-1 {
+  margin-right: 20px;
+}
+
+.mr-2 {
+  margin-right: 25px;
+}
+
+.ml-1 {
+  margin-left: 20px;
+}
+
+.ml-2 {
+  margin-left: 25px;
+}
+
+.m-1 {
+  margin: 20px;
+}
+
+.p-1 {
+  padding-top: 30px;
+}
+
+/* End of simple classes */
+
+.navbar{
+    height: 100%;
+    align-items: center;
+    position: relative;
+
+}
+
+.all-navbar-elements {
+    list-style: none;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding-left: 0px;
+    padding-bottom: 20px;
+  }
+
+.logo-nav {
+  width: 50px;
+  height: auto;
+  margin-left: 20px;
+}
+
+.nav-button {
+    cursor: pointer;
+    max-height: 100px;
+    background-color: transparent;
+    border: 0px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-button:hover {
+  scale: 1.1;
+}
+
+.nav-icons{
+    cursor: pointer;
+
+}
+
+.nav-icon-1 , .nav-icon-2 , .nav-icon-3{
+    width: 60px;
+    border-radius: 20px;
+    height: 10px;
+    background-color: white;
+    margin: 6px auto;
+    transition: all 1s;
+    pointer-events: none;
+    display: block;
+}
+
+.changex{
+  animation: run 1s linear 0s 1 normal forwards;
+}
+.changex .nav-icon-1 {
+    transform: translate(0, 16px) rotate(-45deg);
+}
+.changex .nav-icon-2 {
+    opacity: 0;
+}
+.changex .nav-icon-3 {
+    transform: translate(0, -16px) rotate(45deg);
+}
+
+@keyframes run {
+  
+  0% {
+    right: calc(50%);
+    top: 100px;
+    position: absolute; 
+  }
+  100% {
+    right: 10px;
+    top: 20px;
+    position: absolute; 
+  }
+}
+
+.all-footer-elements {
+  background-image: linear-gradient(#003502,#000000 );
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0;
+}
+
+.all-footer-elements div {
+  padding: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100px;
+  align-items: center;
+  display: flex;
+}
+
+.all-footer-elements div h2{
+  margin: 10px;
+}
+
+.logo-footer {
+  width: 100px;
+  height: auto;
+}
+

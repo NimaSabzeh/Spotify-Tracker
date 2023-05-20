@@ -4,16 +4,18 @@
 <!-- Note, Because the font is taken from an online stylesheet, it might take some while to load (needs internet access) -->
 <html>
 <!-- Start of head -->
+
 <head>
     <!-- title -->
     <title>Sounnds.co</title>
     <!-- putting logo inside title-->
-    <link rel="icon" type="image/x-icon" href="logo.png">
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
     <!-- linking font stylesheet (Adobe fonts) -->
     <link rel="stylesheet" href="https://use.typekit.net/vth1lcm.css">
     <!-- linking main stylesheet (same for all pages) -->
     <link href="style.css" rel="stylesheet" type="text/css" />
     <!-- using meta tags for charset, description, keywords, and author of each page -->
+    <script src="script.js"></script>
     <meta charset="UTF-8">
     <meta name="description" content="main page, including news and today's top 10">
     <meta name="keywords" content="Spotify, Spotify Tracker, Today's Top 10, Music News">
@@ -22,7 +24,21 @@
 
 <body>
     <header>
-        <nav>
+        <nav class="navbar ">
+            <ul class="all-navbar-elements d-flex w-100">
+                <li class="w-100 d-flex justify-content-center">
+                    <button class="nav-button" onclick="handleRoute('sound')">
+                        <h1 class="nav-text">Sounds</h1>
+                        <img class="logo-nav" src="images/logo.png" alt="Website Logo." />
+                    </button>
+                </li>
+                <li class="nav-icons" onclick="menuIcon(this)">
+                    <span class="nav-icon-1"></span>
+                    <span class="nav-icon-2"></span>
+                    <span class="nav-icon-3"></span>
+                </li>
+            </ul>
+
 
         </nav>
     </header>
@@ -37,7 +53,16 @@
         </article>
     </main>
 </body>
-<footer>
-    
+
+<footer class="all-footer-elements d-flex w-100">
+    <h2>Share</h2>
+    <h2>Contact Us</h2>
+    <div>
+        <img class="logo-footer" src="images/logo.png" alt="Website Logo." />
+        <h2>Sounds.co</h2>
+    </div>
+    <h2>About Us</h2>
+    <h2>License</h2>
 </footer>
+
 </html>
