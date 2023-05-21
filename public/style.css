@@ -30,7 +30,7 @@ h1,
 h2,
 h3 {
   color: #ffffff;
-  font-size: 45px;
+  font-size: 65px;
   /* first font */
   font-family: sofia-pro-soft, sans-serif;
   font-weight: 700;
@@ -39,11 +39,11 @@ h3 {
 
 h2 {
   /* !important used to replace other css */
-  font-size: 35px !important;
+  font-size: 45px !important;
 }
 
 h3 {
-  font-size: 15px !important;
+  font-size: 35px !important;
 }
 
 p {
@@ -139,6 +139,7 @@ p {
 }
 
 .nav-button {
+    z-index:100;
     cursor: pointer;
     max-height: 100px;
     background-color: transparent;
@@ -152,8 +153,8 @@ p {
 }
 
 .nav-icons{
+    z-index: 100;
     cursor: pointer;
-
 }
 
 .nav-icon-1 , .nav-icon-2 , .nav-icon-3{
@@ -194,6 +195,49 @@ p {
   }
 }
 
+.overlay {
+  overflow: hidden;
+  width: 100%;
+  opacity: 0;
+  height: 100%;
+  position: fixed;
+  z-index: -1;
+  background-color: black;
+  overflow-x: hidden;
+  transition:all 0.5s;
+}
+
+.overlay-section {
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  width: 34%;
+  text-align: center;
+  position: relative;
+  height: 100%;
+}
+
+.overlay-section img{
+  filter: brightness(50%);
+  object-fit: cover;
+  max-width: 100%;
+  height: 100%;
+}
+
+.overlay-section h1{
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  z-index: 1;
+  justify-self: center;
+  position: absolute;
+  color: #ffffff !important;
+}
+
+.overlay-section img:hover{
+  filter: brightness(100%);
+}
+
+
+
 .all-footer-elements {
   background-image: linear-gradient(#003502,#000000 );
   border-top-left-radius: 100px;
@@ -212,7 +256,7 @@ p {
   display: flex;
 }
 
-.all-footer-elements div h2{
+.all-footer-elements div h3{
   margin: 10px;
 }
 
