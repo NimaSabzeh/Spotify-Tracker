@@ -14,8 +14,15 @@
     <link rel="stylesheet" href="https://use.typekit.net/vth1lcm.css">
     <!-- linking main stylesheet (same for all pages) -->
     <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+    
     <!-- using meta tags for charset, description, keywords, and author of each page -->
     <script src="script.js"></script>
+    <script src="spotify.js"></script>
+
     <meta charset="UTF-8">
     <meta name="description" content="Track your daily spotify usage">
     <meta name="keywords" content="Spotify, Spotify Tracker,">
@@ -24,11 +31,11 @@
 
 <body>
     <div id="menu" class="overlay d-flex w-100">
-        <div class="overlay-section d-flex" onclick="handleRoute('connections')">
+        <div class="overlay-section d-flex" onclick="handleRoute('connection')">
             <h1>Connections</h1>
             <img src="images/Link.png" alt="Link Accounts"/>
         </div>
-        <div class="overlay-section d-flex" onclick="handleRoute('collections')">
+        <div class="overlay-section d-flex" onclick="handleRoute('collection')">
             <h1>Collection</h1>
             <img src="images/Collection.jpg" alt="Song Collection"/>
         </div>
@@ -55,15 +62,10 @@
             </ul>
         </nav>
     </header>
+
     <main>
         <article>
-            <section>
-                <h1>Hello There Genneral Kenobi</h1>
-            </section>
-            <section>
-            </section>
-            <section>
-            </section>
+            
         </article>
     </main>
 </body>
