@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <!-- Nima Sabzeh (nsab7998) -->
+<!-- PLEASE RUN (npm install) TO INSTALL EXPRESS -->
+<!-- Run the server by typing "npm run start"-->
 <!-- Preferred screen resolution ............ Desktop = 1920 x 1080px ............ Mobile (Iphone 12 Pro) = 390 x 844px -->
-<!-- Note, Because the font is taken from an online stylesheet, it might take some while to load (needs internet access) -->
+<!-- NOTE, Because the font, Spotify data, and the carousel are taken from online resources, they might take some while to load (needs internet access) -->
+<!-- As a recommendation (for understanding the code more easily), read the index.html file first (comments), then the Spotify.js file, then the script.js file, and finally the style.css file  -->
 <html>
-<!-- Start of head -->
 
+<!-- Start of head -->
 <head>
     <!-- title -->
     <title>Sounnds.co</title>
-    <!-- putting logo inside title-->
+    <!-- Putting logo inside title-->
     <link rel="icon" type="image/x-icon" href="images/logo.png">
-    <!-- linking font stylesheet (Adobe fonts) -->
+    <!-- Linking font stylesheet (Adobe fonts) -->
     <link rel="stylesheet" href="https://use.typekit.net/vth1lcm.css">
-    <!-- linking main stylesheet (same for all pages) -->
+    <!-- Linking main stylesheet -->
     <link href="style.css" rel="stylesheet" type="text/css" />
-
+    <!-- Adding/linking the stylesheet and JS files for the Splide carousel used in the main page-->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
-    
-    <!-- using meta tags for charset, description, keywords, and author of each page -->
+    <!-- Adding/linking the script and Spotify JS files-->
     <script src="script.js"></script>
     <script src="spotify.js"></script>
-
+    <!-- Using meta tags for charset, description, keywords, and author of each page -->
     <meta charset="UTF-8">
     <meta name="description" content="Track your daily spotify usage">
     <meta name="keywords" content="Spotify, Spotify Tracker,">
@@ -30,6 +32,7 @@
 </head>
 
 <body>
+    <!-- div: menu, contains the 3 menu overlay sections which will be used to navigate and change the html content by clicking on different pages (using onclick and the handleRoute function)-->
     <div id="menu" class="overlay d-flex w-100">
         <div class="overlay-section d-flex" onclick="handleRoute('connection')">
             <h1>Connections</h1>
@@ -46,14 +49,17 @@
     </div>
 
     <header>
+        <!-- Nav contains the 3 main navbar elements, including the website name, logo anf the menu icon -->
         <nav class="navbar ">
             <ul class="all-navbar-elements d-flex w-100">
                 <li class="w-100 d-flex justify-content-center">
+                    <!-- When either the name or logo is pressed the content of the page will change to main -->
                     <button class="nav-button" onclick="handleRoute('main')">
                         <h2 class="nav-text">Sounds</h2>
                         <img class="logo-nav" src="images/logo.png" alt="Website Logo." />
                     </button>
                 </li>
+                <!-- When the menu icon (structured by using 3 spans) is pressed, the menu animation will be displayed and the menu overlay will be fully visible -->
                 <li class="nav-icons" onclick="menuIcon(this); menuOverlay(this);">
                     <span class="nav-icon-1"></span>
                     <span class="nav-icon-2"></span>
@@ -64,12 +70,12 @@
     </header>
 
     <main>
+        <!-- All content inside the article tag changes using JS (depending on which page should be visible at that moment) -->
         <article>
-            
         </article>
     </main>
 </body>
-
+<!-- All footer elements including: 5 <h3> and one <img>, these contents are static and don't have any sort of interaction -->
 <footer class="all-footer-elements d-flex w-100">
     <h3>Share</h3>
     <h3>Contact Us</h3>
