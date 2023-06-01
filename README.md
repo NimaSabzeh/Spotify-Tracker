@@ -1,12 +1,15 @@
 # IMPORTANT
 Nima Sabzeh (nsab7998) 
 ### PLEASE RUN "npm install" TO INSTALL EXPRESS
-* Run the server by typing "npm run start" in the terminal
+* Run the server by typing "npm run start" in the terminal.
+### IF YOU WANT TO SIGN IN WITH YOUR SPOTIFY ACCOUNT, OPEN THE SERVER USING EXPRESS
+* The Spotify Api redirects the user back to the connection page (so it assumes you have opened the server in http://localhost:8888/index.html?page=connection) (which is only possible using express).
 ### Preferred screen resolution
 * Desktop = 1920 x 1080px
-* Mobile (iPhone 12 Pro) = 390 x 844px
+* Mobile (iPhone 12 Pro) = 390 x 844
+
 ### NOTE
-* YOU DON"T HAVE TO SIGN IN TO YOUR SPOTIFY ACCOUNT (the web app also functions without the nedd for the user to sign in, it just can't access users specific data anymore)
+* YOU DON"T HAVE TO SIGN IN TO YOUR SPOTIFY ACCOUNT (the web app also functions without the need for the user to sign in, it just can't access users specific data anymore)
 * Because the fonts, Spotify data, and the carousel are imported from online resources, they might take some while to load (needs internet access).
 * As a recommendation (for understanding the code more easily), read the README file first, then the index.html file (comments), then the Spotify.js file, then the script.js file, and finally the style.css file
 

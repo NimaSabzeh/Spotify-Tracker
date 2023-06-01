@@ -23,6 +23,7 @@ async function getToken() {
     return myPromise;
 }
 
+//Getting the user token after the user has loged into their Spotify account
 async function getUserToken(user_code) {
     let myPromise = new Promise(function (resolve) {
         fetch('https://accounts.spotify.com/api/token', {
@@ -43,6 +44,7 @@ async function getUserToken(user_code) {
     return myPromise;
 }
 
+//Getting tracks according to user input (form)
 async function getTracks(artist, track, genre){
 
     let searchParam = ''
@@ -89,7 +91,7 @@ async function top10() {
     return myPromise;
 }
 
-//Using the accessed track objects, the getTop10() function will extract ad store the image, track name, and artist name to items array (which will be accessed in the script.js)
+//Using the accessed track objects, the getTop10() function will extract and store the image, track name, and artist name to items array (from Today's Top Hits playlist) (which will be accessed in the script.js)
 async function getTop10() {
     await getToken()
     let top10Items = await top10()    
@@ -106,7 +108,7 @@ async function getTop10() {
     return items
 }
 
-
+//Gets the top 10 user specific tracks using their token
 async function top10User() {
     let myPromise = new Promise(function (resolve) {
         fetch("https://api.spotify.com/v1/me/top/tracks?offset=0&limit=10", {

@@ -346,7 +346,6 @@ p {
 .news-section p{
   font-size: 35px;
   max-width: 850px;
-  margin-right: 65px;
 }
 .news-section img{
   object-fit: cover;
@@ -643,6 +642,8 @@ input[type=submit]:hover{
 /* End of section 3 classes (Collection) */
 /* END OF COLLECTION PAGE CLASSES*/
 
+/* START OF CONNECTION PAGE CLASSES*/
+/* Start of section 1 classes (whole page)*/
 .connections-section-1{
   width: 100%;
   display: flex;
@@ -651,12 +652,10 @@ input[type=submit]:hover{
   justify-content: center;
   align-items: center;
 }
-
 .connections-section-1 img{
   width: 300px;
   height: 300px;
 }
-
 .connections-link{
   text-decoration: none;
   margin: 30px;
@@ -667,7 +666,6 @@ input[type=submit]:hover{
   font-style: italic;
   transition: all 0.5s;
 }
-
 .connections-link:hover{
   scale: 0.9;
   transition: all 0.5s;
@@ -679,16 +677,21 @@ input[type=submit]:hover{
   transition: all 0.2s;
   scale: 0.5;
 }
-
 .changeMain{
-  height: calc(100% - 261px)!important;
+  min-height: calc(100% - 261px)!important;
   display: flex;
   justify-content: center;
 }
-
 .changeHtml, .changeBody{
+  min-height: 100%;
   height: 100%;
+  overflow-y: scroll;
 }
+/* End of section 1 classes (whole page)*/
+/* END OF CONNECTION PAGE CLASSES*/
+
+/* START OF TRACK PAGE CLASSES*/
+/* Start of section 1 classes (ApexChart)*/
 #track-section-1{
   width: 100%;
   display: flex;
@@ -712,6 +715,9 @@ input[type=submit]:hover{
   font-size: 20px !important;
   color: white !important;
 }
+/* End of section 1 classes (ApexChart)*/
+
+/* Start of section 2 classes (Chart Data)*/
 #track-section-2{
   display: flex;
   flex-wrap: wrap;
@@ -726,6 +732,9 @@ input[type=submit]:hover{
 .total-values-h2{
   color: #00C24D;
 }
+/* End of section 2 classes (Chart Data)*/
+
+/* Start of section 3 classes (Top Items)*/
 #track-section-3{
   display: flex;
   flex-wrap: wrap;
@@ -740,4 +749,82 @@ input[type=submit]:hover{
 }
 .top-albums-h2 ,.top-artists-h2{
   color: #00C24D;
+}
+/* End of section 3 classes (Top Items)*/
+
+/* Start of mobile view classes (width less than 1000px)*/
+/* NOTE: You might need to reload the page for some elements to change*/
+@media screen and (max-width: 1000px) {
+  /* All Pages */
+  .overlay{
+    flex-wrap: wrap;
+  }
+  .overlay-section{
+    width: 100% !important;
+    height: 34% !important;
+  }
+  .overlay-section img{
+    width: 100%;
+  }
+  /* Main Page */
+  .splide__slide img{
+    max-width: 300px !important;
+    max-height: 300px !important;
+  }
+  #news-section-1{
+    display: flex;
+    flex-wrap: wrap-reverse;
+  }
+  #news-section-2{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #news-section-1 p,#news-section-2 p{
+    margin: 50px 0px 50px 0px !important;
+    text-align: center;
+  }
+  .news-section img{
+    width: 80% !important;
+    height: 700px !important;
+  }
+  #section-3-main{
+    justify-content: space-around !important;
+  }
+  .top10Item{
+    width: 50% !important;
+  }
+  .top10Item h3{
+    width: 100% !important;
+    max-width: 300px;
+  }
+
+  /* Collection Page */
+  #section-2-collection{
+    width: 100% !important;
+  }
+  #section-3-collection{
+    width: 100% !important;
+  }
+  #search-items{
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto !important;
+    overflow-x: scroll;
+    height: 350px !important;
+    align-content: space-between;
+    flex-direction: column;
+  }
+
+  /* Track Page */
+  #track-collection{
+    flex-wrap: nowrap !important;
+    overflow-y: auto !important;
+    overflow-x: scroll;
+    height: 500px !important;
+  }
+  #track-section-3 div{
+    width: 100%;
+    text-align: center;
+    margin: 40px;
+  }
 }

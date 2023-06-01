@@ -18,7 +18,6 @@ window.onload = async function () {
       trackPage()
       break;
     case "connection":
-      console.log("asd")
       connectionPage()
       break;
     case "collection":
@@ -66,6 +65,10 @@ function menuOverlay(x) {
 //5.1: Same as the carousel, when any of the items are clicked, the function will change the page layout to collection, and autofills the artist and track names inside the form.
 function mainPage() {
   //1
+  let perPageLimit = 5
+  if (window.innerWidth < 1000){
+    perPageLimit = 2
+  }
   let mainArticle = document.getElementsByTagName("article")
   mainArticle[0].innerHTML = htmlContent.main
   //2
@@ -73,7 +76,7 @@ function mainPage() {
     new Splide('.splide', {
       type: 'loop',
       focus: 'center',
-      perPage: 5,
+      perPage: perPageLimit,
       autoScroll: {
         speed: 1,
       },
@@ -315,8 +318,14 @@ function addTrack() {
 //END OF COLLECTION PAGE FUNCTIONES
 
 
-
+//START OF CONNECTION PAGE FUNCTIONES
+//Function connectionPage() = This function is called within the window.onload function if page = connection.
+//1: First the function will modify the css of the main,html, and body of this page only (the layout is different compared to other pages)
+//2: The function will then get the code added to the url by spotify (user sign in code).
+//2.1: Then it will call the getUserToken() function using the code to get and set the user-token in localStorage.
+//2.2: Finally, using the stored user token the function will call top10User(), to return the user's top 10 songs (more info in the Spotify.js file)
 async function connectionPage() {
+  //1
   let mainArticle = document.getElementsByTagName("article")
   mainArticle[0].innerHTML = htmlContent.connection
   let mainElement = document.getElementsByTagName("main")
@@ -325,32 +334,58 @@ async function connectionPage() {
   htmlElement[0].classList.toggle("changeHtml")
   let bodyElement = document.getElementsByTagName("body")
   bodyElement[0].classList.toggle("changeBody")
+  //2
   const urlParams = new URLSearchParams(window.location.search);
   const code = urlParams.get('code') || '';
   if (code) {
+    //2.1
     await getUserToken(code)
+    //2.2
     if (localStorage.getItem("user_token")) {
       await top10User()
     }
   }
 }
+//END OF CONNECTION PAGE FUNCTIONES
 
 
-
+//START OF TRACK PAGE FUNCTIONES
+//function trackPage() = This function is called within the window.onload function if page = track.
+//1: First the function will modify the css of the main,html, and body of this page only (the layout is different compared to other pages)(only in mobile view)
+//2: The function will then calculate the total duration of all songs stored in localStorage and converts it to minutes.
+//2.1: The function then uses the total to create a chart and data labels, by calling trackPageChart().
+//3: Finally the function will call topArtistandAlbum(), to calculate and shoecase the user's top 3 artists and albums according to their collection.
 function trackPage() {
   let mainArticle = document.getElementsByTagName("article")
   mainArticle[0].innerHTML = htmlContent.track
+  //1
+  if (window.innerWidth < 1000) {
+    let mainElement = document.getElementsByTagName("main")
+    mainElement[0].classList.toggle("changeMain")
+    let htmlElement = document.getElementsByTagName("html")
+    htmlElement[0].classList.toggle("changeHtml")
+    let bodyElement = document.getElementsByTagName("body")
+    bodyElement[0].classList.toggle("changeBody")
+  }
+  //2
   let localCollection = JSON.parse(localStorage.getItem('collection')) || [];
   let totalms = 0
   for (let i = 0; i < localCollection.length; i++) {
     totalms += localCollection[i].duration_ms / 60000
   }
+  //2.1
   trackPageChart(Math.floor(totalms))
+  //3
   topArtistandAlbum()
 }
 
-
+//function trackPageChart() = is called within the trackPage() function, and will create a graph using ApexCharts. (more info/instructions at "https://apexcharts.com/")
+//1: The function will first creat the graph using the ApexCharts Objects.
+//1.1: The daily average, and sunday's value are calculated according to the songs located in localStorage.
+//2: Then the function will calculate/showcase Today's total value (sunday), week's total value, and the daily average value.
+//2.1: All values are converted using the minutesToHours() function.
 function trackPageChart(totalms) {
+  //1
   var options = {
     series: [
       {
@@ -362,6 +397,7 @@ function trackPageChart(totalms) {
             goals: [
               {
                 name: 'Daily Average',
+                //1.1
                 value: Math.floor(((60 + 45 + 20 + 10 + 90 + 50 + totalms) / 7)),
                 strokeHeight: 5,
                 strokeColor: '#FF0000'
@@ -480,9 +516,11 @@ function trackPageChart(totalms) {
   };
   var chart = new ApexCharts(document.querySelector("#chart"), options);
   chart.render();
+  //2
   let dailyTotal = document.getElementById("track-section-2-text-div1")
   let totalValueToday = document.createElement('h2')
   totalValueToday.classList.toggle("total-values-h2")
+  //2.1
   totalValueToday.innerHTML = `${minutesToHours(totalms)}`
   dailyTotal.appendChild(totalValueToday)
   let weekTotal = document.getElementById("track-section-2-text-div3")
@@ -495,14 +533,18 @@ function trackPageChart(totalms) {
   average.classList.toggle("total-values-h2")
   average.innerHTML = `${minutesToHours(((60 + 45 + 20 + 10 + 90 + 50 + totalms) / 7))}`
   dailyAverage.appendChild(average)
-  console.log(minutesToHours(200))
 }
+
+
+//function minutesToHours() = is called within the trackPageChart() function to convert the given value (minutes) to minutes and hours.
+//1: if the total doesn't reach an hour, the function will only display the total minutes.
 function minutesToHours(n) {
   var num = n;
   var hours = (num / 60);
   var rhours = Math.floor(hours);
   var minutes = (hours - rhours) * 60;
   var rminutes = Math.round(minutes);
+  //1
   if (rhours == 0) {
     return rminutes + "m";
   }
@@ -510,8 +552,15 @@ function minutesToHours(n) {
     return rhours + "h " + rminutes + "m";
   }
 }
+
+
+//function minutesToHours() = is called within the trackPage() function to display the user's top 3 artists and albums, according to their collection.
+//1: The function will first go through the list of songs located in localStorage and gets each item's artist and album name.
+//2: Then the function will use that data to rank the top 3 items using findTopElement() and removeItemAll().
+//2.1: Finally the function will showcase each item on screen using a "h2" element.
 function topArtistandAlbum() {
   let localCollection = JSON.parse(localStorage.getItem('collection')) || [];
+  //1
   let top3Artists = document.getElementById("track-section-3-top-artists");
   let top3Albums = document.getElementById("track-section-3-top-albumes");
   let top3ArtistsArray = [];
@@ -520,13 +569,12 @@ function topArtistandAlbum() {
     top3ArtistsArray.push(localCollection[i].artists[0].name)
     top3AlbumsArray.push(localCollection[i].album.name)
   }
-  console.log(top3ArtistsArray);
-  console.log(top3AlbumsArray);
+  //2
   for (let i=0; i<3;i++){
     if (top3ArtistsArray.length != 0){
       let topArtist = findTopElement(top3ArtistsArray);
-      console.log(topArtist)
       top3ArtistsArray = removeItemAll(top3ArtistsArray, topArtist);
+      //2.1
       let topArtistH2 = document.createElement('h2');
       topArtistH2.classList.toggle("top-artists-h2");
       topArtistH2.innerHTML = `${topArtist}`
@@ -534,7 +582,6 @@ function topArtistandAlbum() {
     }
     if (top3AlbumsArray.length != 0){
       let topAlbum = findTopElement(top3AlbumsArray);
-      console.log(topAlbum)
       top3AlbumsArray = removeItemAll(top3AlbumsArray, topAlbum);
       let topAlbumH2 = document.createElement('h2');
       topAlbumH2.classList.toggle("top-albums-h2");
@@ -546,6 +593,9 @@ function topArtistandAlbum() {
     }
   }
 }
+
+
+//function findTopElement() = is called within topArtistandAlbum(), and simply returnes the most common element in an array (inspired from StackOverFlow)
 function findTopElement(a) {
   let obj = {};
   let maxNum, maxVal;
@@ -558,6 +608,9 @@ function findTopElement(a) {
   }
   return maxNum;
 }
+
+
+//function removeItemAll() = is called within topArtistandAlbum(), and simply deletes a given item from the array, even if it appeared multiple times (inspired from StackOverFlow).
 function removeItemAll(arr, value) {
   var i = 0;
   while (i < arr.length) {
@@ -569,7 +622,7 @@ function removeItemAll(arr, value) {
   }
   return arr;
 }
-
+//END OF TRACK PAGE FUNCTIONES
 
 
 
@@ -603,17 +656,17 @@ const htmlContent = {
 <section id="section-2-main">
     <div>
         <h1 style="margin: 0px 0px 70px 0px; text-align:center">News</h1>
-        <div class="news-section d-flex">
-            <p>
+        <div id="news-section-1" class="news-section d-flex">
+            <p margin-left: 65px">
             <strong> Ed Sheeran get engulfed by waves in music video for new single, "Boat"</strong><br><br>
             Ed Sheeran has released a new single, "Boat", taken off his upcoming album, "-" ("Subtract").
             The new track , out today (April 21) ; comes alongside an accompanying music video that sees the singer submerged in the sea with waves engulfing him. "Boat" serves as the opening track to "-", which is due out on May 5 via Asylum/Atlantic.
             </p>
-            <img class="menu-img" src="images/News-1.jpg" alt="Iran's geographical location" />
+            <img class="menu-img" src="images/News-1.jpg" alt="News Image 1" />
         </div>
-        <div class="news-section d-flex">
-            <img class="menu-img" src="images/News-2.jpg" alt="Iran's geographical location" />
-            <p style="margin-right: 0px !important; margin-left: 65px">
+        <div id="news-section-2" class="news-section d-flex">
+            <img class="menu-img" src="images/News-2.jpg" alt="News Image 1" />
+            <p style="margin-left: 65px">
             <strong>Skeleten announces debut album, "Under Utopia" </strong><br> <br>
             Skeleten , real name Russell Fitzgibbon ; announced the record today (April 21) via multiple social media platforms, writing: “Without getting too serious… 
             I had this vision of waking into the world from eternal nothingness and floating over humanity, seeing everything with universal wonder and love, breathing in all the beauty and sadness of life for the first time.”
@@ -730,11 +783,21 @@ const htmlContent = {
     <h2>Collection</h2>
     <ul id="track-collection"></ul>
 </section>`,
+  //connection: Is the 1 section contained within the article tag when the connection page is called.
+  //SECTION 1:
+  //1: Contains the img tag used for showcasing the Spotify logo, and an a tag to redirect the user to the Spotify log in page.
   connection: `
     <section class="connections-section-1">
     <img src="images/Spotify-Logo.png" alt="Spotify Logo"/>
     <a class="connections-link" href="https://accounts.spotify.com/en/authorize?response_type=code&client_id=a366d46957fb4f30a018bb056c9fa22c&scope=user-top-read&redirect_uri=http://localhost:8888/index.html?page=connection">Link Your Spotify Account</a>
 </section>`,
+  //track: Is the 3 sections contained within the article tag when the track page is called.
+  //SECTION 1:
+  //1: Contains the 1 chart element modified by the trackPageChart() function using ApexCharts.
+  //SECTION 2:
+  //1: This section is used for showcasing the today's total, daily average, and weekly total values.
+  //SECTION 3:
+  //1: This section is used for showcasing the added elements as the user's top 3 artists and albums.
   track: `<section id="track-section-1">
   <div id="chart"></div>
 </section>
@@ -758,3 +821,4 @@ const htmlContent = {
   </div>
 </section>`
 }
+//END OF SCRIPT
