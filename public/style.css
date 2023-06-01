@@ -10,7 +10,6 @@ main {
 html{
   background-image: linear-gradient(#003502, #000000);
 }
-
 section{
   max-width: 100%;
 }
@@ -23,16 +22,13 @@ header {
   border-bottom-right-radius: 100px;
   position: relative;
 }
-
 main {
   position: relative;
 }
-
 article {
   display: flex;
   flex-wrap: wrap;
 }
-
 h1,
 h2{
   color: #ffffff;
@@ -42,12 +38,10 @@ h2{
   font-weight: 700;
   font-style: italic;
 }
-
 h2 {
   /* !important used to replace other css */
   font-size: 45px !important;
 }
-
 h3 {
   color: #ffffff;
   font-size: 35px;
@@ -55,7 +49,6 @@ h3 {
   font-weight: 700;
   font-style: italic;
 }
-
 p {
   color: #ffffff;
   font-size: 25px;
@@ -64,97 +57,78 @@ p {
   font-weight: 400;
   font-style: normal;
 }
-
 .w-100{
     width: 100%;
 }
-
 /* End of html tag's css */
-
 
 /* Useful simple classes wich most elements share (margin, padding, display flex, and etc) used so that they don't need to be repeated for each class*/
 .d-flex {
   display: flex;
 }
-
 .justify-content-between {
   justify-content: space-between;
 }
-
 .justify-content-center {
-    justify-content: center;
-  }
-
+  justify-content: center;
+}
 .col-30 {
   max-width: 1100px;
   width: 100%;
 }
-
 .align-self-center {
   align-self: center;
 }
-
 .align-items-center {
   align-items: center;
 }
-
 .mr-1 {
   margin-right: 20px;
 }
-
 .mr-2 {
   margin-right: 25px;
 }
-
 .ml-1 {
   margin-left: 20px;
 }
-
 .ml-2 {
   margin-left: 25px;
 }
-
 .m-1 {
   margin: 20px;
 }
-
 .p-1 {
   padding-top: 30px;
 }
-
 /* End of simple classes */
+
+/* Start of scrollbar classes */
 ::-webkit-scrollbar {
   width: 20px;
   background-color: #000000;
   border-radius: 10px;
   border: 2px solid white;
 }
-
-/* Track */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px rgb(0, 0, 0); 
   border-radius: 10px;
 }
- 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgb(30, 255, 0); 
   border-radius: 10px;
 }
-
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #036000; 
 }
-/* Navbar classes */
+/* End of scrollbar classes */
 
+/* Start of Nav clsses */
 .navbar{
     height: 100%;
     align-items: center;
     position: relative;
 
 }
-
 .all-navbar-elements {
     list-style: none;
     height: 100%;
@@ -165,13 +139,11 @@ p {
     padding-left: 0px;
     padding-bottom: 20px;
   }
-
 .logo-nav {
   width: 50px;
   height: auto;
   margin-left: 20px;
 }
-
 .nav-button {
     z-index:100;
     cursor: pointer;
@@ -181,16 +153,13 @@ p {
     display: flex;
     align-items: center;
 }
-
 .nav-button:hover {
   scale: 1.1;
 }
-
 .nav-icons{
     z-index: 100;
     cursor: pointer;
 }
-
 .nav-icon-1 , .nav-icon-2 , .nav-icon-3{
     width: 60px;
     border-radius: 20px;
@@ -215,9 +184,7 @@ p {
 .changex .nav-icon-3 {
     transform: translate(0, -16px) rotate(45deg);
 }
-
 @keyframes run {
-  
   0% {
     right: calc(50%);
     top: 100px;
@@ -232,7 +199,6 @@ p {
 /* End of Nav clsses */
 
 /* Overlay menu classes */
-
 .overlay {
   overflow: hidden;
   width: 100%;
@@ -244,7 +210,6 @@ p {
   overflow-x: hidden;
   transition:all 0.5s;
 }
-
 .overlay-section {
   cursor: pointer;
   justify-content: center;
@@ -254,14 +219,12 @@ p {
   position: relative;
   height: 100%;
 }
-
 .overlay-section img{
   filter: brightness(50%);
   object-fit: cover;
   max-width: 100%;
   height: 100%;
 }
-
 .overlay-section h1{
   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   z-index: 1;
@@ -269,7 +232,6 @@ p {
   position: absolute;
   color: #ffffff !important;
 }
-
 .overlay-section img:hover{
   filter: brightness(100%);
 }
@@ -284,7 +246,6 @@ p {
   justify-content: space-around;
   margin: 0;
 }
-
 .all-footer-elements div {
   padding: 20px;
   flex-wrap: wrap;
@@ -293,22 +254,18 @@ p {
   align-items: center;
   display: flex;
 }
-
 .all-footer-elements div h3{
   margin: 10px;
 }
-
 .logo-footer {
   width: 100px;
   height: auto;
 }
-
 /* End of footer classes*/
 
 /* START OF MAIN PAGE CLASSES*/
 
 /* Start of Splide classes */
-
 .splide{
   overflow: hidden;
   position: relative;
@@ -377,7 +334,6 @@ p {
 /* End of Splide classes */
 
 /* Start of section 2 classes (news) */
-
 #section-2-main{
   margin: 0 auto;
   justify-content: center;
@@ -401,7 +357,6 @@ p {
 /* End of section 2 classes (news) */
 
 /* Start of section 3 classes (Top10) */
-
 #section-3-main{
   display: flex;
   justify-content: center;
@@ -425,7 +380,6 @@ p {
   height: 200px;
   box-shadow: -1px 7px 26px #004613;
   transition: all 0.2s;
-  
 }
 .top10Item img:hover{
   border-radius: 50%;
@@ -450,13 +404,13 @@ p {
 /* END OF MAIN PAGE CLASSES*/
 
 /* START OF COLLECTION PAGE CLASSES*/
+/* Start of section 1 classes (form) */
 #section-1-collection{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
 }
-
 #track-form{
   width: 100%;
 }
@@ -496,14 +450,10 @@ p {
 #genre{
   margin-bottom: 30px;
 }
-
 #genre option{
   background-color:#003e02;
   border: #aaffa0;
-
 }
-
-
 input[type=submit]{
   font-family: karmina-sans, sans-serif;
   font-weight: 400;
@@ -519,15 +469,15 @@ input[type=submit]{
   transition: all;
   position: relative;
   border: none;
-
 }
 input[type=submit]:hover{
   scale: 1.1;
   box-shadow: -1px 7px 26px #00ff44;
   cursor: pointer;
 }
+/* End of section 1 classes (form) */
 
-
+/* Start of section 2 classes (Search Items) */
 #section-2-collection{
   text-align: center;
   width: 40%;
@@ -547,7 +497,6 @@ input[type=submit]:hover{
   height: 300px;
   list-style: none;
 }
-
 .search-item-li h3{
   font-size: 22px !important;
   width: 400px;
@@ -560,7 +509,6 @@ input[type=submit]:hover{
   margin-top: 15px;
   margin-bottom: 0px;
 }
-
 .search-item-img{
   border-radius: 40px;
   width: 200px;
@@ -568,7 +516,6 @@ input[type=submit]:hover{
   box-shadow: -1px 7px 26px #004613;
   transition: all 0.2s;
 }
-
 .add-track-button{
   background-color: #00ff08;
   border-radius: 50%;
@@ -578,13 +525,11 @@ input[type=submit]:hover{
   position: relative;
   border: none;
 }
-
 .add-track-button:hover{
   scale: 1.1;
   box-shadow: -1px 7px 26px #00ff44;
   cursor: pointer;
 }
-
 .add-button-icon1{
   width: 50px;
   transform: rotate(90deg);
@@ -597,7 +542,6 @@ input[type=submit]:hover{
   position: absolute;
   left: 12px;
 }
-
 .add-button-icon2{
   width: 50px;
   border-radius: 20px;
@@ -607,12 +551,13 @@ input[type=submit]:hover{
   pointer-events: none;
   display: block;
 }
+/* End of section 2 classes (Search Items) */
 
+/* Start of section 3 classes (Collection) */
 #section-3-collection{
   width: 59%;
   text-align: center; 
 }
-
 #track-collection{
   padding: 0;
   width: 100%;
@@ -640,18 +585,15 @@ input[type=submit]:hover{
   flex-wrap: wrap;
   margin: 15px 0px 15px 0px;
 }
-
 .collection-item h3{
   font-size: 22px !important;
   width: 400px;
   margin-top: 10px;
   margin-bottom: 0px;
 }
-
 .collection-item p{
   font-size: 20px;
 }
-
 .collection-item-img{
   border-radius: 40px;
   width: 200px;
@@ -659,7 +601,6 @@ input[type=submit]:hover{
   box-shadow: -1px 7px 26px #004613;
   transition: all 0.2s;
 }
-
 .delete-track-button{
   background-color: #c90000;
   border-radius: 50%;
@@ -698,4 +639,105 @@ input[type=submit]:hover{
 .aditional-info:hover{
   opacity: 1;
   background-color: rgba(0,0,0,0.7);
+}
+/* End of section 3 classes (Collection) */
+/* END OF COLLECTION PAGE CLASSES*/
+
+.connections-section-1{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.connections-section-1 img{
+  width: 300px;
+  height: 300px;
+}
+
+.connections-link{
+  text-decoration: none;
+  margin: 30px;
+  color: #ffffff;
+  font-size: 35px;
+  font-family: sofia-pro-soft, sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  transition: all 0.5s;
+}
+
+.connections-link:hover{
+  scale: 0.9;
+  transition: all 0.5s;
+}
+.connections-link:visited{
+  color: #00C24D;
+}
+.connections-link:active{
+  transition: all 0.2s;
+  scale: 0.5;
+}
+
+.changeMain{
+  height: calc(100% - 261px)!important;
+  display: flex;
+  justify-content: center;
+}
+
+.changeHtml, .changeBody{
+  height: 100%;
+}
+#track-section-1{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#chart{
+  margin-top: 50px;
+  width: 90%;
+}
+#chart text{
+  font-family: sofia-pro-soft, sans-serif !important;
+  font-weight: 700 !important;
+  font-style: italic !important;
+  font-size: 20px !important;
+  fill: white !important;
+}
+.apexcharts-legend-text{
+  font-family: sofia-pro-soft, sans-serif !important;
+  font-weight: 700 !important;
+  font-style: italic !important;
+  font-size: 20px !important;
+  color: white !important;
+}
+#track-section-2{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+#track-section-2 div{
+  text-align: center;
+  margin: 0px 100px 0px 100px;
+}
+.total-values-h2{
+  color: #00C24D;
+}
+#track-section-3{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+#track-section-3 div{
+  max-width: 50%;
+  text-align: center;
+  margin: 40px;
+}
+.top-albums-h2 ,.top-artists-h2{
+  color: #00C24D;
 }

@@ -2,6 +2,7 @@
 const clientId = "a366d46957fb4f30a018bb056c9fa22c"; 
 const code = 'ff30a0d2e1a0497aaab731444db81b06';
 
+
 //Using the clientId and code to get the requiered token from the API.
 async function getToken() {
     let myPromise = new Promise(function (resolve) {
@@ -16,6 +17,26 @@ async function getToken() {
                 //Getting the access token and storing it in local storage.
                 let access_token = "Bearer " + data.access_token
                 localStorage.setItem("token", access_token)
+                resolve(1)
+            })
+    });
+    return myPromise;
+}
+
+async function getUserToken(user_code) {
+    let myPromise = new Promise(function (resolve) {
+        fetch('https://accounts.spotify.com/api/token', {
+            body: `code=${user_code}&redirect_uri=http://localhost:8888/index.html?page=connection&grant_type=authorization_code`,
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                'Authorization': 'Basic ' + btoa(clientId + ':' + code)
+            },
+            method: "POST"
+        }).then(response => response.json())
+            .then(data => {
+                //Getting the access token and storing it in local storage.
+                let access_token = "Bearer " + data.access_token
+                localStorage.setItem("user_token", access_token)
                 resolve(1)
             })
     });
@@ -86,29 +107,21 @@ async function getTop10() {
 }
 
 
-// if (!code) {
-//     redirectToAuthCodeFlow(clientId);
-// } else {
-//     const accessToken = await getAccessToken(clientId, code);
-//     const profile = await fetchProfile(accessToken);
-//     populateUI(profile);
-// }
-
-// async function redirectToAuthCodeFlow(clientId) {
-//     // TODO: Redirect to Spotify authorization page
-// }
-
-// async function getAccessToken(clientId, code) {
-//   // TODO: Get access token for code
-// }
-
-// async function fetchProfile(token) {
-//     // TODO: Call Web API
-// }
-
-// function populateUI(profile) {
-//     // TODO: Update UI with profile data
-// }
-
-
-
+async function top10User() {
+    let myPromise = new Promise(function (resolve) {
+        fetch("https://api.spotify.com/v1/me/top/tracks?offset=0&limit=10", {
+            headers: {
+                Authorization: localStorage.getItem("user_token")
+            }
+        }).then(response => response.json())
+            .then(data => {
+                let items = data.items
+                
+                for(let i = 0 ; i < items.length; i++){
+                    addTrackLocal(items[i], true)
+                }
+                resolve(items)
+            })
+    });
+    return myPromise;
+} 
