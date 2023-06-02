@@ -4,7 +4,7 @@ Nima Sabzeh (nsab7998).
 * Run the server by typing "npm run start" in the terminal.
 ### SIGNING IN WITH YOUR SPOTIFY ACCOUNT
 * YOU DON"T HAVE TO SIGN IN TO YOUR SPOTIFY ACCOUNT (the web app also functions without the need for the user to sign in, it just can't access users specific data anymore).
-* At fist I thought anyone can sign in with their Spotify account (but that's not the case), if you want to use that feature, your Spotify's email address needs to be added to a list of users located in the Spotify Api website; (so if you want try this amazing feature, please send me an email at "sabzenima@gmail.com" containing your Spotify's email address, so that I can add it to the list)(I'll try to respond as fast as I can).
+* At first I thought anyone can sign in with their Spotify account (but that's not the case), if you want to use that feature, your Spotify's email address needs to be added to a list of users located in the Spotify Api website; (so if you want try this amazing feature, please send me an email at "sabzenima@gmail.com" containing your Spotify's email address, so that I can add it to the list)(I'll try to respond as fast as I can).
 * The Spotify Api redirects the user back to the connection page (so it assumes you have opened the server in http://localhost:8888/index.html?page=connection) (which is only possible using express and port 8888).
 * If you couldn't sign in but still want to see how that feature works, here is a video I made using the same feature: "https://drive.google.com/file/d/1N4unwfaWlIoG83Ez4S8dTP3YLRFtMZzN/view?usp=sharing".
 ### PREFERRED SCREEN RESOLUTION
@@ -136,7 +136,7 @@ Nima Sabzeh (nsab7998).
 * Submit a quota extension request (so that anyone can sign in with their Spotify account, and not just people who have their email linked to the Spotify API website) (more info at "").
 * Add more data categories to be tracked.
 * Simplify the code if possible (or add comments).
-* Simplify the code if possible (or add comments).
+* Add new accounts that can be linked (SoundCloud, YT Muisc and etc...)
 
 # Utilised Resources
 * Spotify API "https://developer.spotify.com/documentation/web-api"
