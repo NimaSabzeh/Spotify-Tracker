@@ -1,3 +1,4 @@
+// All code inspired by the Spotify API, for more information please visit "https://developer.spotify.com/documentation/web-api"
 //clientId and code are both used to get access to the main API
 const clientId = "a366d46957fb4f30a018bb056c9fa22c"; 
 const code = 'ff30a0d2e1a0497aaab731444db81b06';
